@@ -268,9 +268,9 @@
 		track.cCtx = track.canvas.getContext('2d');
 		
 		var gradient = track.cCtx.createLinearGradient(0, 0, 0, _cHeight);
-		gradient.addColorStop(0.1, '#e81717');
-		gradient.addColorStop(0.7, '#7943cb');
-		gradient.addColorStop(1, '#00508d');
+		gradient.addColorStop(0.15, '#e81717');
+		gradient.addColorStop(0.75, '#7943cb');
+		gradient.addColorStop(1, '#005392');
 		track.cCtx.fillStyle = gradient;
 		
 		track.cCtx.strokeStyle = '#AAA';
