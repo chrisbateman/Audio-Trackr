@@ -12,7 +12,6 @@
 		<a href="http://cbateman.com">cbateman.com</a>
 	</header>
 	<div class="songs" ng-cloak>
-		<!--<select ng-model="currentSong" ng-options="(song.name+' ('+song.band+')') for song in songs"></select>-->
 		<span ng-repeat="song in songs">
 			<input id="{{'radio-'+song.name}}" type="radio" ng-model="$parent.currentSong" ng-value="song" />
 			<label for="{{'radio-'+song.name}}">{{song.name+' ('+song.band+')'}}</label>
@@ -42,7 +41,8 @@
 	-->
 	
 	<footer>
-		<p><a href="http://cbateman.com">Read more</a> about this experiment.</p>
+		<p><a href="http://cbateman.com/blog/a-web-audio-api-toy/">Read more</a> about this experiment.</p>
+		<p><a href="https://github.com/chrisbateman/Audio-Trackr">View/fork on GitHub</a>.</p>
 	</footer>
 	
 	<script src="data.js"></script>

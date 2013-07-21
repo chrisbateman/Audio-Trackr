@@ -5,7 +5,7 @@
 	
 	// So sorry. There's no way to detect whether a browser can play multiple audio elements at once.
 	var _isiOS = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false;
-	var _cWidth = 300;
+	var _cWidth;
 	var _cHeight = 200;
 	var _useAudioTag = true;
 	var _showPercent = 0.75;
