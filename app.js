@@ -131,12 +131,8 @@
 		
 		$scope.$watch('trackVolume', function(value) {
 			value = value / 100;
-			if (_useAudioTag) {
-				$scope.track.audio.volume = value;
-			} else {
-				if ($scope.track.node) {
-					$scope.track.node.gain.value = value;
-				}
+			if ($scope.track.gainNode) {
+				$scope.track.gainNode.gain.value = value;
 			}
 		});
 		
@@ -166,7 +162,7 @@
 		
 		$scope.$watch('trackVolume', function(value) {
 			value = value / 100;
-			_master.node.gain.value = value;
+			_master.gainNode.gain.value = value;
 		});
 		
 		_createAnalyser(_master);
@@ -209,8 +205,8 @@
 	function _initAudio() {
 		_aCtx = new AudioContext();
 		_aCtx.createGain = _aCtx.createGain || _aCtx.createGainNode;
-		_master.node = _aCtx.createGain();
-		_master.node.connect(_aCtx.destination);
+		_master.gainNode = _aCtx.createGain();
+		_master.gainNode.connect(_aCtx.destination);
 		
 		if (!_aCtx.createMediaElementSource || _isiOS) {
 			_useAudioTag = false;
@@ -223,8 +219,10 @@
 			var audio = new Audio(track.url);
 			audio.addEventListener('canplaythrough', function(e) {
 				track.node = _aCtx.createMediaElementSource(audio);
+				
+				_addGainNode(track);
 				_createAnalyser(track);
-				track.node.connect(_master.node);
+				
 				doneCallback();
 			});
 			
@@ -251,12 +249,18 @@
 		}
 	}
 	
+	function _addGainNode(track) {
+		track.gainNode = _aCtx.createGain();
+		track.node.connect(track.gainNode);
+		track.gainNode.connect(_master.gainNode);
+	}
+	
 	function _createAnalyser(track) {
 		var analyser = _aCtx.createAnalyser();
 		analyser.smoothingTimeConstant = 0.6;
 		analyser.fftSize = _fftSize;
 		
-		track.node.connect(analyser);
+		track.gainNode.connect(analyser);
 		track.analyser = analyser;
 	}
 	
@@ -297,9 +301,8 @@
 	}
 	
 	function _playBuffer(track) {
-		var sourceNode = _aCtx.createBufferSource();
-		sourceNode.connect(_master.node);
-		sourceNode.buffer = track.buffer;
+		track.node = _aCtx.createBufferSource();
+		track.node.buffer = track.buffer;
 		
 		var bufferOffset = track.pauseTime || 0;
 		track.startTime = _aCtx.currentTime;
@@ -307,13 +310,13 @@
 			track.startTime -= track.pauseTime;
 		}
 		
-		if (sourceNode.start) {
-			sourceNode.start(0, bufferOffset);
+		if (track.node.start) {
+			track.node.start(0, bufferOffset);
 		} else {
-			sourceNode.noteGrainOn(0, bufferOffset, 180);
+			track.node.noteGrainOn(0, bufferOffset, 180);
 		}
-		track.node = sourceNode;
 		
+		_addGainNode(track);
 		_createAnalyser(track);
 	}
 	
