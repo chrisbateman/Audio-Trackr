@@ -1,4 +1,4 @@
-
+// My apologies for the current lack of documentation.
 (function() {
 	window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
