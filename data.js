@@ -68,6 +68,29 @@ var songs = [
 			Moog: '//s1.cbateman.com/demos/AudioTrackr/files/tryingtobecool/MOOG MEGAWAVE.mp3',
 			Riff: '//s2.cbateman.com/demos/AudioTrackr/files/tryingtobecool/RIFF.mp3',
 			Vocals: '//cbateman.com/demos/AudioTrackr/files/tryingtobecool/LEAD DRY.mp3'
+        }
+    },
+    {
+		name: 'Never Look Away',
+		band: 'Vienna Teng',
+		link: 'https://itunes.apple.com/us/album/aims/id712374158',
+        tracks: {
+            '4 on floor kick': 'files/never-look-away/4-ON-FLOOR-KICK.mp3',
+            'bass': 'files/never-look-away/BASS.mp3',
+            'claps': 'files/never-look-away/CLAPS.mp3',
+            'deep quarter kick': 'files/never-look-away/DEEP-QUARTER-KICK.mp3',
+            'dusty stick': 'files/never-look-away/DUSTY-STICK.mp3',
+            'efx percussion': 'files/never-look-away/EFX-PERCUSSION.mp3',
+            'end vox': 'files/never-look-away/END-VOX.mp3',
+            'harmony vox': 'files/never-look-away/HARMONY-VOX.mp3',
+            'high percussion': 'files/never-look-away/HIGH-PERCUSSION.mp3',
+            'high synth': 'files/never-look-away/HIGH-SYNTH.mp3',
+            'lead synth': 'files/never-look-away/LEAD-SYNTH.mp3',
+            'lead vox': 'files/never-look-away/LEAD-VOX.mp3',
+            'low pulse synth': 'files/never-look-away/LOW-PULSE-SYNTH.mp3',
+            'main kick': 'files/never-look-away/MAIN-KICK.mp3',
+            'nord synth': 'files/never-look-away/NORD-SYNTH.mp3',
+            'pianos': 'files/never-look-away/PIANOS.mp3'
 		}
 	}
 ];
