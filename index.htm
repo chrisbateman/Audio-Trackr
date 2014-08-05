@@ -1,29 +1,34 @@
 <!doctype html>
-<html ng-app="Page" ng-controller="PageController">
+<html>
 <head>
 	<title>Audio Trackr</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+	<script src="app.js"></script>
 </head>
-<body>
+<body ng-app="AudioTrackr" ng-controller="MainController">
 	<header>
 		<h1>Audio Trackr</h1>
 		<a href="http://cbateman.com">cbateman.com</a>
 	</header>
+	
 	<div class="songs" ng-cloak>
 		<span ng-repeat="song in songs">
 			<input id="{{'radio-'+song.name}}" type="radio" ng-model="$parent.currentSong" ng-value="song" />
 			<label for="{{'radio-'+song.name}}">{{song.name+' ('+song.band+')'}}</label>
 		</span>
 	</div>
+	
 	<div class="controls" ng-show="currentSong" ng-cloak>
 		<h2>{{currentSong.name}}</h2>
 		<button ng-disabled="!ready" ng-show="!playing" ng-click="playTracks()">Play</button>
 		<button ng-disabled="!ready" ng-show="playing" ng-click="stopTracks()">Stop</button>
 		<a href="{{currentSong.link}}" target="_blank" title="Download on iTunes"><img src="itunes.png" /></a>
 	</div>
+	
 	<div class="error" ng-show="error" ng-cloak>Sorry, it looks like this won't work in your browser.</div>
+	
 	<div class="track-container" ng-cloak>
 		<div ng-controller="TrackController" class="track" ng-class="{loading:loading==true}" ng-repeat="(key, track) in currentSong.tracks">
 			<h2>{{key}}<span ng-show="status"> ({{status}})</span></h2>
@@ -32,20 +37,10 @@
 			<span class="spinner" ng-show="loading"></span>
 		</div>
 	</div>
-	<!--
-	<div ng-controller="MasterTrackController" class="track master">
-		<h2>Master</h2>
-		<input type="range" ng-model="trackVolume" />
-		<canvas></canvas>
-	</div>
-	-->
 	
 	<footer>
 		<p><a href="http://cbateman.com/blog/a-web-audio-api-toy/">Read more</a> about this experiment.</p>
 		<p><a href="https://github.com/chrisbateman/Audio-Trackr">View/fork on GitHub</a>.</p>
 	</footer>
-	
-	<script src="data.js"></script>
-	<script src="app.js"></script>
 </body>
 </html>
