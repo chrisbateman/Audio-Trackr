@@ -6,8 +6,6 @@ var ngAnnotate = require('gulp-ng-annotate');
 
 
 gulp.task('js', function () {
-    //gulp.src(['src/**/lettersCtrl.js', 'src/**/*.js'])
-    //gulp.src(['src/**/*.js'])
     gulp.src(['src/**/app.js', 'src/**/*.js'])
         //.pipe(sourcemaps.init())
         .pipe(concat('app.js'))
@@ -21,8 +19,4 @@ gulp.task('js', function () {
 
 gulp.task('watch', ['js'], function () {
     gulp.watch('src/**/*.js', ['js'])
-});
-
-gulp.task('default', function() {
-    console.log('default task');
 });

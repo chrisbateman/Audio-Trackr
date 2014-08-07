@@ -30,12 +30,7 @@
 	<div class="error" ng-show="error" ng-cloak>Sorry, it looks like this won't work in your browser.</div>
 	
 	<div class="track-container" ng-cloak>
-		<div ng-controller="TrackController" class="track" ng-class="{loading:loading==true}" ng-repeat="(key, track) in currentSong.tracks">
-			<h2>{{key}}<span ng-show="status"> ({{status}})</span></h2>
-			<input type="range" ng-model="trackVolume" />
-			<canvas></canvas>
-			<span class="spinner" ng-show="loading"></span>
-		</div>
+		<div class="track" ng-class="{loading:loading==true}" ng-repeat="(key, track) in currentSong.tracks" track="track" track-name="{{key}}" ></div>
 	</div>
 	
 	<footer>
