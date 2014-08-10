@@ -9,7 +9,7 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 	$scope.songs = songFactory;
 	$scope.ready = false
 	$scope.playing = false;
-	
+	$scope.trackWidth;
 	$scope.aCtx;
 	$scope.master = {};
 	$scope.useAudioTag = true;
@@ -17,10 +17,12 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 	
 	
 	(function init() {
-		if (!AudioContext) { // bag it and go home
+		if (!window.AudioContext) { // bag it and go home
 			$scope.error = true;
 			return;
 		}
+		
+		setTrackWidth();
 		
 		parseTracks(songFactory);
 		initAudio();
@@ -79,15 +81,13 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 	
 	function clearAudios(tracks) {
 		angular.forEach(tracks, function(track, key) {
-			if (track.audio) {
-				track.audio.src = '';
-			}
+			track.clear();
 		});
 	}
 	
 	
 	function initAudio() {
-		$scope.aCtx = new AudioContext();
+		$scope.aCtx = new window.AudioContext();
 		$scope.aCtx.createGain = $scope.aCtx.createGain || $scope.aCtx.createGainNode;
 		$scope.master.gainNode = $scope.aCtx.createGain();
 		$scope.master.gainNode.connect($scope.aCtx.destination);
@@ -99,18 +99,29 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 	
 	
 	function parseTracks(songs) {
-		for (var i in songs) {
-			var song = songs[i];
+		angular.forEach(songs, function(song) {
 			var trackCount = 0;
-			for (var k in song.tracks) {
-				var track = song.tracks[k];
-				song.tracks[k] = {
-					url: track,
+			angular.forEach(song.tracks, function(track, key) {
+				song.tracks[key] = {
+					url: track
 				};
 				trackCount++;
-			}
+			});
 			song.trackCount = trackCount;
-		}
+		});
 	}
+	
+	
+	function setTrackWidth() {
+		$scope.trackWidth = document.querySelector('.track-container').offsetWidth;
+		
+		if ($scope.trackWidth > 1200) {
+			$scope.trackWidth /= 3;
+		} else if ($scope.trackWidth > 800) {
+			$scope.trackWidth /= 2;
+		}
+		$scope.trackWidth -= 22;
+	}
+	
 	
 });
