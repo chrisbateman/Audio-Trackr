@@ -77,11 +77,7 @@ angular.module('AudioTrackr').factory('audioTrack', function () {
 		if (this.useAudioTag) {
 			this.audio.pause();
 		} else {
-			if (this.bsNode.stop) {
-				this.bsNode.stop(0);
-			} else {
-				this.bsNode.noteOff(0);
-			}
+			this.bsNode.stop(0);
 			this.pauseTime = this.ctx.currentTime - this.startTime;
 		}
 	};
@@ -103,11 +99,7 @@ angular.module('AudioTrackr').factory('audioTrack', function () {
 			this.startTime -= this.pauseTime;
 		}
 		
-		if (this.bsNode.start) {
-			this.bsNode.start(0, bufferOffset);
-		} else {
-			this.bsNode.noteGrainOn(0, bufferOffset, 180);
-		}
+		this.bsNode.start(0, bufferOffset);
 		
 		this.gainNode = this.addGainNode(this.bsNode, this.outNode);
 		this.analyser = this.createAnalyser(this.gainNode, this.fftSize);
