@@ -3,8 +3,8 @@ angular.module('AudioTrackr').directive('track', function(){
     var trackController = function($scope, $element) {
         
         $scope.trackVolume = 100;
-    	$scope.loading = true;
-    	
+        $scope.loading = true;
+        
     	var track = $scope.track;
     	var canvas = $element[0].querySelector('canvas');
     	var cWidth;
