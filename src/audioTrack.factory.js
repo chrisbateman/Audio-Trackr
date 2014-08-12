@@ -1,4 +1,4 @@
-angular.module('AudioTrackr').factory('audioTrack', function () {
+angular.module('AudioTrackr').factory('audioTrackFactory', function () {
 	
 	function AudioTrack(ctx, useAudioTag, url, outNode, fftSize) {
 		this.ctx = ctx;

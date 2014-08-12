@@ -1,6 +1,6 @@
 angular.module('AudioTrackr').directive('track', function() {
 	
-	var trackController = function($scope, $element, $timeout, audioTrack) {
+	var trackController = function($scope, $element, $timeout, audioTrackFactory) {
 		
 		$scope.trackVolume = 100;
 		$scope.loading = true;
@@ -20,7 +20,7 @@ angular.module('AudioTrackr').directive('track', function() {
 		
 		
 		(function init() {
-			audioTrack = audioTrack.getNewAudioTrack(
+			audioTrack = audioTrackFactory.getNewAudioTrack(
 				$scope.$parent.aCtx,
 				$scope.$parent.useAudioTag,
 				track.url,
