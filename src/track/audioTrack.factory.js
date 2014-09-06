@@ -1,4 +1,4 @@
-angular.module('AudioTrackr').factory('audioTrackFactory', function () {
+angular.module('AudioTrackr').factory('audioTrackFactory', function ($http) {
 	
 	function AudioTrack(cfg) {
 		this.ctx = cfg.ctx;
@@ -49,18 +49,18 @@ angular.module('AudioTrackr').factory('audioTrackFactory', function () {
 			}
 			statusCallback('loading');
 			
-			var request = new XMLHttpRequest();
-			request.open('GET', this.url, true);
-			request.responseType = 'arraybuffer';
-			request.onload = function() {
-				statusCallback('decoding');
-				self.ctx.decodeAudioData(request.response, function(buffer) {
-					self.buffer = buffer;
-					statusCallback('ready');
+			$http
+				.get(this.url, {
+					responseType: 'arraybuffer'
+				})
+				.then(function(response) {
+					statusCallback('decoding');
+					self.ctx.decodeAudioData(response.data, function(buffer) {
+						self.buffer = buffer;
+						statusCallback('ready');
+					});
 				});
-			};
 			
-			request.send();
 		}
 	};
 	

@@ -100,12 +100,12 @@ angular.module('AudioTrackr').directive('track', function() {
 			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 			
 			ctx.beginPath();
-			for (var j=0, jLen=byteFreqArr.length; j<jLen; j++) {
-				ctx.fillRect(j * freqDrawWidth, canvasHeight - (byteFreqArr[j] / 256 * canvasHeight), (freqDrawWidth - 2), canvasHeight);
+			for (var i=0, iLen=byteFreqArr.length; i<iLen; i++) {
+				ctx.fillRect(i * freqDrawWidth, canvasHeight - (byteFreqArr[i] / 256 * canvasHeight), (freqDrawWidth - 2), canvasHeight);
 				
-				var percent = timeDomainArr[j] / 256;
+				var percent = timeDomainArr[i] / 256;
 				var offset = canvasHeight - (percent * canvasHeight) - 1;
-				ctx.lineTo(j * timeDrawWidth, offset);
+				ctx.lineTo(i * timeDrawWidth, offset);
 			}
 			ctx.stroke();
 		};
