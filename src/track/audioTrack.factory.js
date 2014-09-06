@@ -1,12 +1,11 @@
 angular.module('AudioTrackr').factory('audioTrackFactory', function () {
 	
-	function AudioTrack(ctx, useAudioTag, url, outNode, fftSize) {
-		this.ctx = ctx;
-		this.useAudioTag = useAudioTag;
-		this.url = url;
-		this.outNode = outNode;
-		this.fftSize = fftSize;
-		
+	function AudioTrack(cfg) {
+		this.ctx = cfg.ctx;
+		this.useAudioTag = cfg.useAudioTag;
+		this.url = cfg.url;
+		this.outNode = cfg.outNode;
+		this.fftSize = cfg.fftSize;
 	}
 	
 	AudioTrack.prototype.addGainNode = function (node) {
@@ -44,7 +43,7 @@ angular.module('AudioTrackr').factory('audioTrackFactory', function () {
 			self.audio = audio;
 		} else {
 			if (self.buffer) { // already loaded
-				self.pauseTime = null;
+				self. pauseTime = null;
 				statusCallback('ready');
 				return;
 			}
@@ -116,6 +115,7 @@ angular.module('AudioTrackr').factory('audioTrackFactory', function () {
 		getNewAudioTrack: function() {
 			var instance = Object.create(AudioTrack.prototype);
 			AudioTrack.apply(instance, arguments);
+			
 			return instance;
 		}
 	};

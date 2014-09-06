@@ -17,7 +17,8 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 	
 	
 	(function init() {
-		if (!window.AudioContext) { // bag it and go home
+		if (!window.AudioContext) {
+			// bag it and go home
 			$scope.error = true;
 			return;
 		}
