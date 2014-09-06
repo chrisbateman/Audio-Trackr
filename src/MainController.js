@@ -73,7 +73,9 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 	
 	function tick() {
 		angular.forEach($scope.currentSong.tracks, function(track, key) {
-			track.draw();
+			if (track.draw) {
+				track.draw();
+			}
 		});
 		
 		window.requestAnimationFrame(tick);

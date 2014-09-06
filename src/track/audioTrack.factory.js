@@ -105,8 +105,8 @@ angular.module('AudioTrackr').factory('audioTrackFactory', function ($http) {
 	};
 	
 	AudioTrack.prototype.clear = function() {
-		if (track.audio) {
-			track.audio.src = '';
+		if (this.audio) {
+			this.audio.src = '';
 		}
 	};
 	
