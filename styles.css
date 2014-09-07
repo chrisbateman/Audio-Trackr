@@ -19,6 +19,28 @@ a:hover {
 	text-decoration: underline;
 }
 
+img {
+	vertical-align: middle;
+}
+
+button {
+	background-color: #4387B4;
+	padding: 4px 13px 3px;
+	color: #fff;
+	font-size: 17px;
+	border: 0 none;
+	cursor: pointer;
+}
+button:hover {
+	background-color: #5C98C0;
+}
+button[disabled] {
+	opacity: 0.4;
+	color: #CCC;
+}
+
+
+
 
 header {
 	background-color: #050505;
@@ -35,6 +57,30 @@ header a {
 	margin-top: 6px;
 	font-size: 18px;
 }
+
+@media (max-width:400px) {
+	header h1 {
+		display: block;
+		margin: 0 0 0.1em;
+	}
+	header a {
+		float: none;
+	}
+}
+
+footer {
+	margin-top: 2em;
+	background-color: #222;
+	padding: 1em 15px 3em;
+}
+
+.error {
+	margin: 15px;
+	padding: 15px;
+	background-color: #422;
+	border: 1px solid #300;
+}
+
 
 
 .songs {
@@ -66,6 +112,7 @@ header a {
 }
 
 
+
 .controls {
 	padding: 10px 15px;
 	background-color: #222;
@@ -80,29 +127,11 @@ header a {
 .controls > div {
 	text-align: center;
 }
-
-button {
-	background-color: #4387B4;
-	padding: 4px 13px 3px;
-	color: #fff;
-	font-size: 17px;
-	/*vertical-align: top;*/
-	border: 0 none;
-	cursor: pointer;
-}
-button:hover {
-	background-color: #5C98C0;
-}
-button[disabled] {
-	opacity: 0.4;
-	color: #CCC;
-}
 .controls button {
 	margin:0 1.5em 0 0;
 }
-img {
-	vertical-align: middle;
-}
+
+
 
 .track-container {
 	margin: 2em 5px;
@@ -126,12 +155,12 @@ img {
 	margin: 0;
 	width: 130px;
 }
-input[type='range'] {
+.track input[type='range'] {
 	-webkit-appearance: none !important;
 	background: #666;
 	height: 7px;
 }
-input[type='range']::-webkit-slider-thumb {
+.track input[type='range']::-webkit-slider-thumb {
 	-webkit-appearance: none !important;
 	background: #888;
 	height: 15px;
@@ -139,13 +168,13 @@ input[type='range']::-webkit-slider-thumb {
 	border-radius: 50%;
 }
 
-canvas {
+.track canvas {
 	background-color: #363636;
 	border: 1px solid #4F4F4F;
 	vertical-align: middle;
 }
 
-.spinner {
+.track .spinner {
 	height: 40px;
 	width: 40px;
 	position: absolute;
@@ -166,29 +195,4 @@ canvas {
 @keyframes spinner-frames {
 	from { transform: rotate(0deg); }
 	to { transform: rotate(359deg); }
-}
-
-
-.error {
-	margin: 15px;
-	padding: 15px;
-	background-color: #422;
-	border: 1px solid #300;
-}
-
-footer {
-	margin-top: 2em;
-	background-color: #222;
-	padding: 1em 15px 3em;
-}
-
-
-@media (max-width:400px) {
-	header h1 {
-		display: block;
-		margin: 0 0 0.1em;
-	}
-	header a {
-		float: none;
-	}
 }

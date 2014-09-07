@@ -1,0 +1,6 @@
+<div class="track" ng-class="{loading:loading==true}">
+    <h2>{{trackName}}<span ng-show="status"> ({{status}})</span></h2>
+    <input type="range" ng-model="trackVolume" />
+    <canvas></canvas>
+    <div class="spinner" ng-show="loading"></div>
+</div>
