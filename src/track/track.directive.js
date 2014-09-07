@@ -116,6 +116,7 @@ angular.module('AudioTrackr').directive('track', function() {
 	
 	return {
 		restrict: 'EA',
+		replace: true,
 		scope: {
 			track: '=',
 			trackName: '@'
