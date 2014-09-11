@@ -24,8 +24,6 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 		}
 		
 		setTrackWidth();
-		
-		parseTracks(songFactory);
 		initAudio();
 	})();
 	
@@ -63,7 +61,7 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 	});
 	
 	$scope.trackLoad = function(key, track) {
-		if (++thisLoadCount >= $scope.currentSong.trackCount) {
+		if (++thisLoadCount >= $scope.currentSong.tracks.length) {
 			$scope.ready = true;
 			$scope.$$phase || $scope.$apply();
 			tick();
@@ -98,20 +96,6 @@ angular.module('AudioTrackr').controller('MainController', function($scope, song
 		if (!$scope.aCtx.createMediaElementSource || isiOS) {
 			$scope.useAudioTag = false;
 		}
-	}
-	
-	
-	function parseTracks(songs) {
-		angular.forEach(songs, function(song) {
-			var trackCount = 0;
-			angular.forEach(song.tracks, function(track, key) {
-				song.tracks[key] = {
-					url: track
-				};
-				trackCount++;
-			});
-			song.trackCount = trackCount;
-		});
 	}
 	
 	

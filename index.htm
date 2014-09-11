@@ -30,7 +30,7 @@
 	<div class="error" ng-show="error" ng-cloak>Sorry, it looks like this won't work in your browser.</div>
 	
 	<div class="track-container" ng-cloak>
-		<div track="track" track-name="{{key}}" ng-repeat="(key, track) in currentSong.tracks"></div>
+		<div track="track" track-name="{{track.name}}" ng-repeat="track in currentSong.tracks"></div>
 	</div>
 	
 	<footer>
