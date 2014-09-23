@@ -4,7 +4,7 @@
 	<title>Audio Trackr</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles.css" />
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+	<script src="angular-1.2.23.min.js"></script>
 	<script src="app.js"></script>
 </head>
 <body ng-app="AudioTrackr" ng-controller="MainController">
@@ -21,7 +21,6 @@
 	</div>
 	
 	<div class="controls" ng-show="currentSong" ng-cloak>
-		<h2>{{currentSong.name}}</h2>
 		<button ng-disabled="!ready" ng-show="!playing" ng-click="playTracks()">Play</button>
 		<button ng-disabled="!ready" ng-show="playing" ng-click="stopTracks()">Stop</button>
 		<a href="{{currentSong.link}}" target="_blank" title="Download on iTunes"><img alt="iTunes" src="itunes.png" /></a>

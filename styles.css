@@ -1,14 +1,14 @@
 html {
 	height: 100%;
-	background-color: #222;
+	background-color: #333;
 }
 body {
 	margin: 0;
-	background-color: #2F2F2F;
+	background-color: #222;
 	color: #AAA;
 	overflow-y: scroll;
 	font-family: Avenir, Futura, "Century Gothic", sans-serif;
-	-webkit-text-size-adjust:none;
+	-webkit-text-size-adjust: none;
 }
 
 a {
@@ -43,7 +43,7 @@ button[disabled] {
 
 
 header {
-	background-color: #050505;
+	background-color: #333;
 	padding: 15px;
 }
 header h1 {
@@ -70,7 +70,7 @@ header a {
 
 footer {
 	margin-top: 2em;
-	background-color: #222;
+	background-color: #333;
 	padding: 1em 15px 3em;
 }
 
@@ -85,7 +85,6 @@ footer {
 
 .songs {
 	padding: 8px 5px;
-	background-color: #222;
 }
 .songs span {
 	display: inline-block;
@@ -101,6 +100,9 @@ footer {
 .songs span:last-child label {
 	margin-right: 0;
 }
+.songs input:focus + label {
+	box-shadow: 0 0 0 1px #ddd;
+}
 .songs input:checked + label {
 	background-color: #EEE;
 	border-color: #EEE;
@@ -114,10 +116,8 @@ footer {
 
 
 .controls {
-	padding: 10px 15px;
-	background-color: #222;
+	padding: 0px 15px 10px;
 	line-height: 2.5em;
-	border-top: 2px solid #111;
 }
 .controls h2 {
 	margin: 0 1.5em 0 0;
@@ -169,7 +169,7 @@ footer {
 }
 
 .track canvas {
-	background-color: #363636;
+	background-color: #333;
 	border: 1px solid #4F4F4F;
 	vertical-align: middle;
 }
