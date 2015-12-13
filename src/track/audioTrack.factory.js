@@ -31,6 +31,7 @@ angular.module('AudioTrackr').factory('audioTrackFactory', function ($http) {
 		
 		if (self.useAudioTag) {
 			var audio = new Audio(self.url);
+			audio.crossOrigin = 'anonymous';
 			audio.addEventListener('canplaythrough', function(e) {
 				self.node = self.ctx.createMediaElementSource(audio);
 				
